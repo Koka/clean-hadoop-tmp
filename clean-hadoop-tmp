@@ -33,7 +33,7 @@ unless File.exists?(lockfile)
 
   target_dirs.each do |tdir|
     target_dir = tdir.split(" ")[7]
-    sub_dirs = `hadoop fs -ls #{target_dir}`.split("\n")
+    sub_dirs = `hadoop fs -ls #{target_dir}`.split("\n")[1..-1]
     sub_dirs.each do |sdir|
       dir_time = Time.parse("#{sdir.split(" ")[5]} #{sdir.split(" ")[6]}").to_i
       dir_name = sdir.split(" ")[7]
